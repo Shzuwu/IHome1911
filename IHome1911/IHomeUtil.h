@@ -14,8 +14,10 @@
 #include <algorithm>   
 #include "CompressiveTracker.h"
 
-using namespace std;
+#include "IHomeHeaders.h"
 
+using namespace bgslibrary::algorithms;
+using namespace std;
 using namespace cv;
 
 
@@ -25,6 +27,10 @@ public:
 	IHomeUtil();
 	virtual ~IHomeUtil();
 
+	// 跟踪
+	void trackObj(Mat& img_input, Rect& rect);
+	// 是否已经检测到了目标
+	bool isDetected();
 
 	// 将输入图片缩放至可以实时处理的足够小尺度
 	void resizeInputImg(const Mat& img_input, Mat& img_output, int img_size);
@@ -42,6 +48,7 @@ private:
 	CvBlobDetector* detector;
 	CvBlobTracker* tracker;
 	CompressiveTracker* ct;
+	IBGS *bgs = new MultiLayer;;
 
 	CvBlobSeq* pNewList;
 	CvBlobSeq* pOldList;
@@ -51,9 +58,11 @@ private:
 	float threshold = 50.0;
 	int resizeImgSize = 189;
 
-private:
 	// 将Blob缩放回原图的尺度
 	void resizeBlobToOrg(const CvBlob& blob_input, CvBlob& blob_output);
+	// 检测阶段检测符合条件的运动目标
+	void initCTTracker(Mat& img_input, Rect& rect);
 
+	bool isObjDetected; // 是否已经检测到了目标
 };
 

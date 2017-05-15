@@ -2,6 +2,7 @@
 
 
 IHomeUtil::IHomeUtil()
+	: isObjDetected(false)
 {
 	cout << "IHomeUtil()" << endl;
 
@@ -11,6 +12,7 @@ IHomeUtil::IHomeUtil()
 
 	pNewList = new CvBlobSeq;
 	pOldList = new CvBlobSeq;
+	isObjDetected = false;
 }
 
 // 析构函数
@@ -18,13 +20,13 @@ IHomeUtil::~IHomeUtil()
 {
 	cout << "~IHomeUtil()" << endl;
 
+	delete bgs;
 	delete pOldList;
 
 	tracker->Release();
 	detector->Release();
 	//delete pNewList;
 }
-
 
 // 前景掩膜团块检测
 void IHomeUtil::blobDetection(Mat& imgInput, Mat& imgMask, Mat& imgBlob, CvBlob& blob)
@@ -155,4 +157,72 @@ void IHomeUtil::resizeInputImg(const Mat& img_input, Mat& img_output, int img_si
 
 
 	resize(img_input, img_output, size);
+}
+
+
+// 是否已经检测到了目标
+bool IHomeUtil::isDetected()
+{
+	return isObjDetected;
+}
+
+
+
+// 检测阶段检测符合条件的运动目标
+void IHomeUtil::initCTTracker(Mat& img_input, Rect& rect)
+{
+	cv::Mat img_mask;
+	cv::Mat img_bkgmodel;
+	// 默认情况下自动显示前景掩膜
+	bgs->process(img_input, img_mask, img_bkgmodel);
+
+	IplImage *pImg = &IplImage(img_input);
+	IplImage *pImgFG = &IplImage(img_mask);
+	Mat imgBlob = Mat(img_input);//显示到前景图像上
+
+	// 没有跟踪结果，则进行新团块检测
+	detector->DetectNewBlob(pImg, pImgFG, pNewList, pOldList);
+
+	if (pNewList->GetBlobNum() > 0){
+
+		int i = pNewList->GetBlobNum();
+		for (; i > 0; i--)// 遍历当前帧中的新团块
+		{
+			CvBlob* pB = pNewList->GetBlob(i - 1);
+			drawBlob(imgBlob, pB, "", color_white);
+
+			// 满足阈值则添加至跟踪器
+			if (pB->w > threshold && pB->h > threshold)
+			{
+				cout << "新目标  --->  W： " << pB->w << ", H: " << pB->h << endl;
+				tracker->AddBlob(pB, pImg, pImgFG); // 添加到跟踪器
+				pNewList->DelBlobByID(i - 1);			// 从检测器中删除
+
+				// 压缩跟踪器
+				Point start(pB->x - 0.5*pB->w, pB->y - 0.5*pB->h);
+				Point end(pB->x + 0.5*pB->w, pB->y + 0.5*pB->h);
+				Rect r_blob(start, end);
+				rect = r_blob;
+				
+				ct->init(img_input, r_blob);
+				isObjDetected = true;		
+			}
+		}
+	}
+	pOldList = pNewList;
+}
+
+
+
+// CT Tracking
+void IHomeUtil::trackObj(Mat& img_input, Rect& rect)
+{
+	// 如果没有检测到就检测
+	if (!isDetected()){
+		initCTTracker(img_input, rect);
+		return;
+	}
+
+	// 检测到了就做跟踪，采用压缩跟踪器
+	ct->processFrame(img_input, rect);
 }

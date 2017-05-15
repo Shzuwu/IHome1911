@@ -142,6 +142,7 @@
     <ClInclude Include="MultiLayer\LocalBinaryPattern.h" />
     <ClInclude Include="MultiLayer\OpenCvDataConversion.h" />
     <ClInclude Include="MultiLayer\OpenCvLegacyIncludes.h" />
+    <ClInclude Include="OpencvLibs.h" />
     <ClInclude Include="package_bgs\IBGS.h" />
     <ClInclude Include="package_bgs\KDE.h" />
     <ClInclude Include="package_bgs\KDE\KernelTable.h" />

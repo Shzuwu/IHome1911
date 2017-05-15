@@ -1,18 +1,18 @@
 #include <iostream>
 #include <cv.h>
 #include <highgui.h>
-#include "IHomeHeaders.h"
 
+#include "SceneCalibration.h"
+#include "IHomeUtil.h"
 
-
-using namespace bgslibrary::algorithms;
 using namespace SceneCalibration;
 
-IBGS *bgs = new MultiLayer;
 IHomeUtil *util = new IHomeUtil;
+
 CvBlob bolb;
 IplImage *frame;
 cv::Size default_size;
+Rect objRect;
 
 int main(int argc, char **argv)
 {
@@ -21,7 +21,7 @@ int main(int argc, char **argv)
 	cvWaitKey(0);
 
 	CvCapture *capture = 0;
-	//capture = cvCaptureFromCAM(0);
+	// capture = cvCaptureFromCAM(0);
 	capture = cvCaptureFromFile("F:\\研二下学期\\方向\\Datasets\\ww3.wmv");
 
 	if (!capture){
@@ -48,34 +48,30 @@ int main(int argc, char **argv)
 			printLabels(labels);			// 打印标记信息
 		}
 
-		cv::Mat img_frame(frame);
+
+		Mat img_frame(frame);
+		Mat img_input;
+
+		resize(img_frame, img_input, default_size);
 		util->showInputImg(img_frame, labels); // 显示带标记信息的输入图像
+		
+		imshow("输入图像", img_input);
 
-		cv::Mat img_input;
-		cv::resize(img_frame, img_input, default_size);
-		//imshow("输入图像", img_frame);
+		util->trackObj(img_input, objRect);
 
-		cv::Mat img_mask;
-		cv::Mat img_bkgmodel;
-		// 默认情况下自动显示前景掩膜
-		bgs->process(img_input, img_mask, img_bkgmodel);
-
-		if (!img_mask.empty())
-			imshow("前景", img_mask);
-
-		Mat img_blob;
-		// 全景掩膜的团块检测,
-		util->blobDetection(img_input, img_mask, img_blob, bolb);
-
-		if (!img_blob.empty()){
-			imshow("团块信息", img_blob);
+		//检测到目标，rect才有值
+		if (util->isDetected())
+		{
+			// Draw Points
+			rectangle(img_input, objRect, Scalar(0, 0, 255));
+			// Display
+			imshow("跟踪窗口", img_input);
 		}
 			
-		if (cvWaitKey(33) >= 0)
+		if (cvWaitKey(1) >= 0)
 			break;
 	}
 
-	delete bgs;
 	delete util;
 
 	cvDestroyAllWindows();

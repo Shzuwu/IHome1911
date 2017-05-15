@@ -242,5 +242,8 @@
     <ClInclude Include="CompressiveTracker.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="OpencvLibs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
