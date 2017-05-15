@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{E75A7519-D2A4-48DF-804C-2BDF0DA73EDA}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>IHome1911</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="ClibrationData.cpp" />
+    <ClCompile Include="CodeBook.cpp" />
+    <ClCompile Include="CompressiveTracker.cpp" />
+    <ClCompile Include="DemoTest.cpp" />
+    <ClCompile Include="DPTexture.cpp" />
+    <ClCompile Include="dp\AdaptiveMedianBGS.cpp" />
+    <ClCompile Include="dp\Eigenbackground.cpp" />
+    <ClCompile Include="dp\Error.cpp" />
+    <ClCompile Include="dp\GrimsonGMM.cpp" />
+    <ClCompile Include="dp\Image.cpp" />
+    <ClCompile Include="dp\MeanBGS.cpp" />
+    <ClCompile Include="dp\PratiMediodBGS.cpp" />
+    <ClCompile Include="dp\TextureBGS.cpp" />
+    <ClCompile Include="dp\WrenGA.cpp" />
+    <ClCompile Include="dp\ZivkovicAGMM.cpp" />
+    <ClCompile Include="GMG.cpp" />
+    <ClCompile Include="IHomeUtil.cpp" />
+    <ClCompile Include="IMBS\IMBS.cpp" />
+    <ClCompile Include="IndependentMultimodal.cpp" />
+    <ClCompile Include="MultiLayer.cpp" />
+    <ClCompile Include="MultiLayer\blob.cpp" />
+    <ClCompile Include="MultiLayer\BlobExtraction.cpp" />
+    <ClCompile Include="MultiLayer\BlobResult.cpp" />
+    <ClCompile Include="MultiLayer\CMultiLayerBGS.cpp" />
+    <ClCompile Include="MultiLayer\LocalBinaryPattern.cpp" />
+    <ClCompile Include="package_bgs\KDE.cpp" />
+    <ClCompile Include="package_bgs\KDE\KernelTable.cpp" />
+    <ClCompile Include="package_bgs\KDE\NPBGmodel.cpp" />
+    <ClCompile Include="package_bgs\KDE\NPBGSubtractor.cpp" />
+    <ClCompile Include="PBAS\PBAS.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ClibrationData.h" />
+    <ClInclude Include="CodeBook.h" />
+    <ClInclude Include="CompressiveTracker.h" />
+    <ClInclude Include="DPTexture.h" />
+    <ClInclude Include="dp\AdaptiveMedianBGS.h" />
+    <ClInclude Include="dp\Bgs.h" />
+    <ClInclude Include="dp\BgsParams.h" />
+    <ClInclude Include="dp\Eigenbackground.h" />
+    <ClInclude Include="dp\Error.h" />
+    <ClInclude Include="dp\GrimsonGMM.h" />
+    <ClInclude Include="dp\Image.h" />
+    <ClInclude Include="dp\MeanBGS.h" />
+    <ClInclude Include="dp\PratiMediodBGS.h" />
+    <ClInclude Include="dp\TextureBGS.h" />
+    <ClInclude Include="dp\WrenGA.h" />
+    <ClInclude Include="dp\ZivkovicAGMM.h" />
+    <ClInclude Include="GMG.h" />
+    <ClInclude Include="IHomeHeaders.h" />
+    <ClInclude Include="IHomeUtil.h" />
+    <ClInclude Include="IMBS\IMBS.hpp" />
+    <ClInclude Include="IndependentMultimodal.h" />
+    <ClInclude Include="MultiLayer.h" />
+    <ClInclude Include="MultiLayer\BackgroundSubtractionAPI.h" />
+    <ClInclude Include="MultiLayer\BGS.h" />
+    <ClInclude Include="MultiLayer\blob.h" />
+    <ClInclude Include="MultiLayer\BlobExtraction.h" />
+    <ClInclude Include="MultiLayer\BlobLibraryConfiguration.h" />
+    <ClInclude Include="MultiLayer\BlobResult.h" />
+    <ClInclude Include="MultiLayer\CMultiLayerBGS.h" />
+    <ClInclude Include="MultiLayer\LocalBinaryPattern.h" />
+    <ClInclude Include="MultiLayer\OpenCvDataConversion.h" />
+    <ClInclude Include="MultiLayer\OpenCvLegacyIncludes.h" />
+    <ClInclude Include="package_bgs\IBGS.h" />
+    <ClInclude Include="package_bgs\KDE.h" />
+    <ClInclude Include="package_bgs\KDE\KernelTable.h" />
+    <ClInclude Include="package_bgs\KDE\NPBGmodel.h" />
+    <ClInclude Include="package_bgs\KDE\NPBGSubtractor.h" />
+    <ClInclude Include="PBAS\PBAS.h" />
+    <ClInclude Include="SceneCalibration.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

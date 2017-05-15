@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\KDE">
+      <UniqueIdentifier>{e13e6d0f-430c-49ae-9524-e773965f7bb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\IMBS">
+      <UniqueIdentifier>{59e7cb11-960f-4672-9571-8506114a7a49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\MultiLayer">
+      <UniqueIdentifier>{abebb04f-4853-4da1-a17e-5bac79c546d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\dp">
+      <UniqueIdentifier>{b0b38238-0f75-43d2-b939-b2646f409ac4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\PBAS">
+      <UniqueIdentifier>{05ad96aa-f634-4410-aa80-ea09b62c1a79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\T2F">
+      <UniqueIdentifier>{7e804323-dc30-4485-8ab3-1081808c005d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DemoTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="package_bgs\KDE.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="package_bgs\KDE\KernelTable.cpp">
+      <Filter>Header Files\KDE</Filter>
+    </ClCompile>
+    <ClCompile Include="package_bgs\KDE\NPBGmodel.cpp">
+      <Filter>Header Files\KDE</Filter>
+    </ClCompile>
+    <ClCompile Include="package_bgs\KDE\NPBGSubtractor.cpp">
+      <Filter>Header Files\KDE</Filter>
+    </ClCompile>
+    <ClCompile Include="IndependentMultimodal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IMBS\IMBS.cpp">
+      <Filter>Header Files\IMBS</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiLayer\blob.cpp">
+      <Filter>Header Files\MultiLayer</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiLayer\BlobExtraction.cpp">
+      <Filter>Header Files\MultiLayer</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiLayer\BlobResult.cpp">
+      <Filter>Header Files\MultiLayer</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiLayer\CMultiLayerBGS.cpp">
+      <Filter>Header Files\MultiLayer</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiLayer\LocalBinaryPattern.cpp">
+      <Filter>Header Files\MultiLayer</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiLayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CodeBook.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DPTexture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dp\AdaptiveMedianBGS.cpp">
+      <Filter>Header Files\dp</Filter>
+    </ClCompile>
+    <ClCompile Include="dp\Eigenbackground.cpp">
+      <Filter>Header Files\dp</Filter>
+    </ClCompile>
+    <ClCompile Include="dp\Error.cpp">
+      <Filter>Header Files\dp</Filter>
+    </ClCompile>
+    <ClCompile Include="dp\GrimsonGMM.cpp">
+      <Filter>Header Files\dp</Filter>
+    </ClCompile>
+    <ClCompile Include="dp\Image.cpp">
+      <Filter>Header Files\dp</Filter>
+    </ClCompile>
+    <ClCompile Include="dp\MeanBGS.cpp">
+      <Filter>Header Files\dp</Filter>
+    </ClCompile>
+    <ClCompile Include="dp\PratiMediodBGS.cpp">
+      <Filter>Header Files\dp</Filter>
+    </ClCompile>
+    <ClCompile Include="dp\TextureBGS.cpp">
+      <Filter>Header Files\dp</Filter>
+    </ClCompile>
+    <ClCompile Include="dp\WrenGA.cpp">
+      <Filter>Header Files\dp</Filter>
+    </ClCompile>
+    <ClCompile Include="dp\ZivkovicAGMM.cpp">
+      <Filter>Header Files\dp</Filter>
+    </ClCompile>
+    <ClCompile Include="PBAS\PBAS.cpp">
+      <Filter>Header Files\PBAS</Filter>
+    </ClCompile>
+    <ClCompile Include="ClibrationData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GMG.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IHomeUtil.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CompressiveTracker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="package_bgs\IBGS.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="package_bgs\KDE.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="package_bgs\KDE\KernelTable.h">
+      <Filter>Header Files\KDE</Filter>
+    </ClInclude>
+    <ClInclude Include="package_bgs\KDE\NPBGmodel.h">
+      <Filter>Header Files\KDE</Filter>
+    </ClInclude>
+    <ClInclude Include="package_bgs\KDE\NPBGSubtractor.h">
+      <Filter>Header Files\KDE</Filter>
+    </ClInclude>
+    <ClInclude Include="IndependentMultimodal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IMBS\IMBS.hpp">
+      <Filter>Header Files\IMBS</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiLayer\BackgroundSubtractionAPI.h">
+      <Filter>Header Files\MultiLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiLayer\BGS.h">
+      <Filter>Header Files\MultiLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiLayer\blob.h">
+      <Filter>Header Files\MultiLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiLayer\BlobExtraction.h">
+      <Filter>Header Files\MultiLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiLayer\BlobLibraryConfiguration.h">
+      <Filter>Header Files\MultiLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiLayer\BlobResult.h">
+      <Filter>Header Files\MultiLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiLayer\CMultiLayerBGS.h">
+      <Filter>Header Files\MultiLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiLayer\LocalBinaryPattern.h">
+      <Filter>Header Files\MultiLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiLayer\OpenCvDataConversion.h">
+      <Filter>Header Files\MultiLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiLayer\OpenCvLegacyIncludes.h">
+      <Filter>Header Files\MultiLayer</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiLayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CodeBook.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DPTexture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dp\AdaptiveMedianBGS.h">
+      <Filter>Header Files\dp</Filter>
+    </ClInclude>
+    <ClInclude Include="dp\Bgs.h">
+      <Filter>Header Files\dp</Filter>
+    </ClInclude>
+    <ClInclude Include="dp\BgsParams.h">
+      <Filter>Header Files\dp</Filter>
+    </ClInclude>
+    <ClInclude Include="dp\Eigenbackground.h">
+      <Filter>Header Files\dp</Filter>
+    </ClInclude>
+    <ClInclude Include="dp\Error.h">
+      <Filter>Header Files\dp</Filter>
+    </ClInclude>
+    <ClInclude Include="dp\GrimsonGMM.h">
+      <Filter>Header Files\dp</Filter>
+    </ClInclude>
+    <ClInclude Include="dp\Image.h">
+      <Filter>Header Files\dp</Filter>
+    </ClInclude>
+    <ClInclude Include="dp\MeanBGS.h">
+      <Filter>Header Files\dp</Filter>
+    </ClInclude>
+    <ClInclude Include="dp\PratiMediodBGS.h">
+      <Filter>Header Files\dp</Filter>
+    </ClInclude>
+    <ClInclude Include="dp\TextureBGS.h">
+      <Filter>Header Files\dp</Filter>
+    </ClInclude>
+    <ClInclude Include="dp\WrenGA.h">
+      <Filter>Header Files\dp</Filter>
+    </ClInclude>
+    <ClInclude Include="dp\ZivkovicAGMM.h">
+      <Filter>Header Files\dp</Filter>
+    </ClInclude>
+    <ClInclude Include="PBAS\PBAS.h">
+      <Filter>Header Files\PBAS</Filter>
+    </ClInclude>
+    <ClInclude Include="ClibrationData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GMG.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneCalibration.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IHomeUtil.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IHomeHeaders.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CompressiveTracker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,16 @@
+#include "opencv2/video/background_segm.hpp"
+#include "opencv2/legacy/blobtrack.hpp"
+#include "opencv2/legacy/legacy.hpp"
+#include "opencv2/highgui/highgui.hpp"
+#include <opencv2/imgproc/imgproc_c.h>
+
+#include "IBGS.h"
+#include "GMG.h"
+#include "IndependentMultimodal.h"
+#include "MultiLayer.h"
+#include "CodeBook.h"
+#include "DPTexture.h"
+#include "PBAS\PBAS.h"
+#include "SceneCalibration.h"
+#include "ClibrationData.h"
+#include "IHomeUtil.h"
