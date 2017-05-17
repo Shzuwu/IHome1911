@@ -28,7 +28,9 @@ public:
 	virtual ~IHomeUtil();
 
 	// 跟踪
-	void trackObj(Mat& img_input, Rect& rect);
+	void trackObj(Mat& img_input, Rect& rect); // CT Tracking
+	void IHomeUtil::trackObj(Mat& img_input, Mat& imgBlob, Rect& rect); // BGS Tracking
+
 	// 是否已经检测到了目标
 	bool isDetected();
 

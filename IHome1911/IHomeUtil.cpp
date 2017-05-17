@@ -55,11 +55,8 @@ void IHomeUtil::blobDetection(Mat& imgInput, Mat& imgMask, Mat& imgBlob, CvBlob&
 					tracker->AddBlob(pB, pImg, pImgFG); // 添加到跟踪器
 					pNewList->DelBlobByID(i - 1);			// 从检测器中删除
 
-					// 压缩跟踪器
-					Point start(pB->x - 0.5*pB->w, pB->y - 0.5*pB->h);
-					Point end(pB->x + 0.5*pB->w, pB->y + 0.5*pB->h);
-					Rect r_blob(start, end);
-					ct->init(imgInput, r_blob);
+					blob = *pB;
+					isObjDetected = true;
 				}
 			}
 		}
@@ -78,6 +75,8 @@ void IHomeUtil::blobDetection(Mat& imgInput, Mat& imgMask, Mat& imgBlob, CvBlob&
 			tracker->ProcessBlob(i - 1, bTrack, pImg, pImgFG);
 
 			drawBlob(imgBlob, bTrack);
+
+			blob = *bTrack;
 
 			// 缩放回原图尺度，供外部使用
 			resizeBlobToOrg(*bTrack, blob);
@@ -225,4 +224,24 @@ void IHomeUtil::trackObj(Mat& img_input, Rect& rect)
 
 	// 检测到了就做跟踪，采用压缩跟踪器
 	ct->processFrame(img_input, rect);
+}
+
+// BGS Tracking
+void IHomeUtil::trackObj(Mat& img_input, Mat& imgBlob, Rect& rect)
+{
+	// 如果没有检测到就检测
+	Mat img_mask;
+	Mat img_bkgmodel;
+	CvBlob blob;
+
+	// 默认情况下自动显示前景掩膜
+	bgs->process(img_input, img_mask, img_bkgmodel);
+
+	blobDetection(img_input, img_mask, imgBlob, blob);
+	
+	rect.x = blob.x - 0.5*blob.w;
+	rect.y = blob.y - 0.5*blob.h;
+	rect.height = blob.h;
+	rect.width = blob.w;
+
 }

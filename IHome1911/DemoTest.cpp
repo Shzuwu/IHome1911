@@ -11,7 +11,7 @@ IHomeUtil *util = new IHomeUtil;
 
 CvBlob bolb;
 IplImage *frame;
-cv::Size default_size;
+Size default_size;
 Rect objRect;
 
 int main(int argc, char **argv)
@@ -51,22 +51,23 @@ int main(int argc, char **argv)
 
 		Mat img_frame(frame);
 		Mat img_input;
+		Mat img_blob;
 
 		resize(img_frame, img_input, default_size);
 		util->showInputImg(img_frame, labels); // 显示带标记信息的输入图像
 		
+		util->trackObj(img_input, img_blob, objRect);// BGS Tracking
+
 		imshow("输入图像", img_input);
 
-		util->trackObj(img_input, objRect);
-
-		//检测到目标，rect才有值
-		if (util->isDetected())
-		{
-			// Draw Points
-			rectangle(img_input, objRect, Scalar(0, 0, 255));
-			// Display
-			imshow("跟踪窗口", img_input);
-		}
+		////检测到目标，rect才有值
+		//if (util->isDetected())
+		//{
+		//	// Draw Points
+		//	rectangle(img_input, objRect, Scalar(0, 0, 255));
+		//	// Display
+		//	imshow("跟踪窗口", img_input);
+		//}
 			
 		if (cvWaitKey(1) >= 0)
 			break;
