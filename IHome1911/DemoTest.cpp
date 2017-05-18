@@ -48,12 +48,14 @@ int main(int argc, char **argv)
 			printLabels(labels);			// 打印标记信息
 		}
 
-
 		Mat img_frame(frame);
 		Mat img_input;
 		Mat img_blob;
 
-		resize(img_frame, img_input, default_size);
+		//resize(img_frame, img_input, default_size);
+
+		util->resizeInputImg(img_frame, img_input, 160);
+
 		util->showInputImg(img_frame, labels); // 显示带标记信息的输入图像
 		
 		util->trackObj(img_input, img_blob, objRect);// BGS Tracking
@@ -61,13 +63,13 @@ int main(int argc, char **argv)
 		imshow("输入图像", img_input);
 
 		////检测到目标，rect才有值
-		//if (util->isDetected())
-		//{
-		//	// Draw Points
-		//	rectangle(img_input, objRect, Scalar(0, 0, 255));
-		//	// Display
-		//	imshow("跟踪窗口", img_input);
-		//}
+		if (util->isDetected())
+		{
+			// Draw Points
+			rectangle(img_frame, objRect, Scalar(0, 0, 255));
+			// Display
+			imshow("跟踪窗口", img_frame);
+		}
 			
 		if (cvWaitKey(1) >= 0)
 			break;
@@ -80,4 +82,3 @@ int main(int argc, char **argv)
 
 	return 0;
 }
-

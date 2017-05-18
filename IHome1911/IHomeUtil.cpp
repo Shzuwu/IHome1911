@@ -49,7 +49,7 @@ void IHomeUtil::blobDetection(Mat& imgInput, Mat& imgMask, Mat& imgBlob, CvBlob&
 				drawBlob(imgBlob, pB, "", color_white);
 
 				// 满足阈值则添加至跟踪器
-				if (pB->w > threshold && pB->h > threshold)
+				if (pB->w > threshold/ratio && pB->h > threshold/ratio)
 				{
 					cout << "新目标  --->  W： " << pB->w << ", H: " << pB->h << endl;
 					tracker->AddBlob(pB, pImg, pImgFG); // 添加到跟踪器
@@ -141,19 +141,29 @@ void IHomeUtil::drawBlob(Mat& img, CvBlob* b, string objName, Scalar color)
 // 将Blob缩放回原图的尺度
 void IHomeUtil::resizeBlobToOrg(const CvBlob& blob_input, CvBlob& blob_output)
 {
-	// TODO：尺度还原
-
-
+	blob_output.x = blob_input.x * ratio;
+	blob_output.y = blob_input.y * ratio;
+	blob_output.h = blob_input.h * ratio;
+	blob_output.w = blob_input.w * ratio;
 }
 
 
 // 将输入图片缩放至可以实时处理的足够小尺度,img_size为缩放是的最大尺度
 void IHomeUtil::resizeInputImg(const Mat& img_input, Mat& img_output, int img_size)
 {
-	// TODO：尺度缩小
+	// 尺度缩小
 	Size size;
 
-
+	if (img_input.cols <= img_input.rows){
+		size.height = img_size;
+		ratio = (float)img_input.rows / img_size;//缩放比例
+		size.width = (float)img_input.cols / ratio;
+	}
+	else{
+		size.width = img_size;
+		ratio = (float)img_input.cols / img_size;//缩放比例
+		size.height = (float)img_input.rows / ratio;
+	}
 
 	resize(img_input, img_output, size);
 }
@@ -243,5 +253,14 @@ void IHomeUtil::trackObj(Mat& img_input, Mat& imgBlob, Rect& rect)
 	rect.y = blob.y - 0.5*blob.h;
 	rect.height = blob.h;
 	rect.width = blob.w;
+
+}
+
+
+// 进行异常检测
+void IHomeUtil::anomalyDetection(const Rect& objRect, const list<ClibrationData>& labels)
+{
+	float area = 0;
+
 
 }

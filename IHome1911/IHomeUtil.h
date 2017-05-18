@@ -58,6 +58,7 @@ private:
 	Scalar color_white = Scalar(255, 255, 255);
 	Scalar color_green = Scalar(0, 255, 0);
 	float threshold = 50.0;
+	float ratio = 1.0;
 	int resizeImgSize = 189;
 
 	// 将Blob缩放回原图的尺度
@@ -66,5 +67,9 @@ private:
 	void initCTTracker(Mat& img_input, Rect& rect);
 
 	bool isObjDetected; // 是否已经检测到了目标
+
+public:
+	// 进行异常检测
+	void anomalyDetection(const Rect& objRect, const list<ClibrationData>& labels);
 };
 
