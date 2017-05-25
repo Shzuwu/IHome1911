@@ -57,7 +57,9 @@ private:
 
 	Scalar color_white = Scalar(255, 255, 255);
 	Scalar color_green = Scalar(0, 255, 0);
+	Scalar color_orange = Scalar(255, 140, 0);
 	float threshold = 50.0;
+	float areaThreshold = 32000;
 	float ratio = 1.0;
 	int resizeImgSize = 189;
 
@@ -70,6 +72,6 @@ private:
 
 public:
 	// ½øÐÐÒì³£¼ì²â
-	void anomalyDetection(const Rect& objRect, const list<ClibrationData>& labels);
+	void anomalyDetection(Mat& img, const Rect& objRect, list<ClibrationData>& labels, string& areaName);
 };
 

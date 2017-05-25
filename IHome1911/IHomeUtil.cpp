@@ -25,7 +25,7 @@ IHomeUtil::~IHomeUtil()
 
 	tracker->Release();
 	detector->Release();
-	//delete pNewList;
+	// delete pNewList;
 }
 
 // 前景掩膜团块检测
@@ -258,9 +258,39 @@ void IHomeUtil::trackObj(Mat& img_input, Mat& imgBlob, Rect& rect)
 
 
 // 进行异常检测
-void IHomeUtil::anomalyDetection(const Rect& objRect, const list<ClibrationData>& labels)
+void IHomeUtil::anomalyDetection(Mat& img, const Rect& objRect, list<ClibrationData>& labels, string& areaName)
 {
-	float area = 0;
+	bool isInFurniture = false;
+	float area = 0.0;
+	area = objRect.width*objRect.height;
 
+	Point objPoint(objRect.x + 0.5*objRect.width, objRect.y + 0.5*objRect.height);
 
+	list<ClibrationData>::iterator v;
+	for (v = labels.begin(); v != labels.end(); ++v){
+		if (v->getRect()->contains(objPoint))
+		{
+			if (areaName != v->getLabel())
+			{
+				cout << "                                  ↓                                     " << endl;
+				cout << "The old man whose area is [ " << area << " ] is in [ " << v->getLabel() << " ] now !" << endl;
+				areaName = v->getLabel();
+			}
+			
+			isInFurniture = true;
+		}
+	}
+
+	if (!isInFurniture && area > areaThreshold)
+	{
+		//cout << "Anomaly whit area [ " << area << " ] !" << endl;
+
+		// 在图片上打印异常信息
+		string warningText = "The old man fell down";
+		
+		Point pointStart(objRect.x, objRect.y);
+		CvSize textSize = getTextSize(warningText, FONT_HERSHEY_SIMPLEX, 0.5, 1, 0);
+		rectangle(img, pointStart, Point(objRect.x + textSize.width, objRect.y - textSize.height), color_orange, CV_FILLED, 8, 0);
+		putText(img, warningText, pointStart, FONT_HERSHEY_SIMPLEX, 0.5, color_white, 1);
+	}
 }

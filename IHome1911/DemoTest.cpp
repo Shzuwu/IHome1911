@@ -17,6 +17,7 @@ Rect objRect;
 int main(int argc, char **argv)
 {
 	LISTLABEL labels ;
+	string areaName = "initial area";
 	
 	cvWaitKey(0);
 
@@ -67,8 +68,11 @@ int main(int argc, char **argv)
 		{
 			// Draw Points
 			rectangle(img_frame, objRect, Scalar(0, 0, 255));
+
+			util->anomalyDetection(img_frame,objRect, labels, areaName);
+
 			// Display
-			imshow("¸ú×Ù´°¿Ú", img_frame);
+			imshow("¸ú×Ù´°¿Ú", img_frame);			
 		}
 			
 		if (cvWaitKey(1) >= 0)
@@ -76,6 +80,8 @@ int main(int argc, char **argv)
 	}
 
 	delete util;
+
+	system("pause");
 
 	cvDestroyAllWindows();
 	cvReleaseCapture(&capture);
