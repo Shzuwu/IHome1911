@@ -1,4 +1,4 @@
-﻿Build started 2017/5/18 星期四 下午 9:39:49.
+﻿Build started 2017/5/25 星期四 下午 12:12:04.
      1>Project "F:\研二下学期\方向\IHome1911\IHome1911\IHome1911.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          D:\DevelopmentSoftware\Visual_Studio_2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt DemoTest.cpp
@@ -39,4 +39,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.62
+Time Elapsed 00:00:05.71
